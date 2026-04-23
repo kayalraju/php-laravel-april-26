@@ -1,14 +1,15 @@
 <?php
 include "../config/db.php";
+
 $name = $_POST['name'];
 $price = $_POST['price'];
 $category = $_POST['category'];
-$desc = $_POST['desc'];
+$description = $_POST['description'];
 
 
-$stmt = $pdo->prepare("INSERT INTO products(name,price,category,desc) VALUES(?,?,?,?)");
+$stmt = $pdo->prepare("INSERT INTO products(name,price,category,description) VALUES(?,?,?,?)");
 
-$stmt->execute([$name,$price,$category,$desc]);
+$stmt->execute([$name,$price,$category,$description]);
 
 header("Location: ../index.php");
 ?>

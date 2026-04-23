@@ -1,8 +1,13 @@
 
 
 <?php 
-// require "config/db.php";
- include "include/header.php";
+require "config/db.php";
+include "include/header.php";
+
+
+$stmt = $pdo->prepare("SELECT * FROM products");
+$stmt->execute();
+$products = $stmt->fetchAll();
 
 ?>
 
@@ -24,28 +29,24 @@
 
 <table class="table table-bordered">
 <tr>
-    <th>ID</th><th>Name</th><th>Email</th><th>Status</th><th>Action</th>
-</tr>
-<tr>
-    <td>1</td>
-    <td>John Doe</td>
-    <td>9i9w8@example.com</td>
-    <td>Active</td>
+    <th>Sl.No</th><th>Name</th><th>Price</th><th>category</th><th>Description</th><th>Action</th>
 </tr>
 
-<!-- <?php foreach($users as $u): ?>
+
+<?php foreach($products as $product): ?>
 <tr>
-    <td><?= $u['id'] ?></td>
-    <td><?= $u['name'] ?></td>
-    <td><?= $u['email'] ?></td>
-    <td><?= $u['status'] ?></td>
+    <td><?= $product['id'] ?></td>
+    <td><?= $product['name'] ?></td>
+    <td><?= $product['price'] ?></td>
+    <td><?= $product['category'] ?></td>
+    <td><?= $product['description'] ?></td>
     <td>
-        <a href="edit.php?id=<?= $u['id'] ?>" class="btn btn-warning btn-sm">Edit</a>
-        <a href="actions/delete.php?id=<?= $u['id'] ?>" class="btn btn-danger btn-sm">Delete</a>
-        <a href="view.php?id=<?= $u['id'] ?>" class="btn btn-info btn-sm">View</a>
+        <a href="" class="btn btn-warning btn-sm">Edit</a>
+        <a href="action/delete.php?id=<?= $product['id'] ?>" class="btn btn-danger btn-sm">Delete</a>
+        <a href="" class="btn btn-info btn-sm">View</a>
     </td>
 </tr>
-<?php endforeach; ?> -->
+<?php endforeach; ?>
 
 </table>
 
