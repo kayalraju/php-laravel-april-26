@@ -14,6 +14,7 @@ $products = $stmt->fetchAll();
 <h3>All product</h3>
 
 <a href="create.php" class="btn btn-primary mb-2">Add product</a>
+<a href="recyclebin.php" class="btn btn-primary mb-2">Recycle Bin</a>
 
 <form method="GET" class="form-inline mb-3">
     <input type="text" name="search" placeholder="Search..." class="form-control mr-2">
@@ -41,9 +42,9 @@ $products = $stmt->fetchAll();
     <td><?= $product['category'] ?></td>
     <td><?= $product['description'] ?></td>
     <td>
-        <a href="" class="btn btn-warning btn-sm">Edit</a>
+        <a href="edit.php?id=<?= $product['id'] ?>" class="btn btn-warning btn-sm">Edit</a>
         <a href="action/delete.php?id=<?= $product['id'] ?>" class="btn btn-danger btn-sm">Delete</a>
-        <a href="" class="btn btn-info btn-sm">View</a>
+        <a href="view.php?id=<?= $product['id'] ?>" class="btn btn-info btn-sm">View</a>
     </td>
 </tr>
 <?php endforeach; ?>
