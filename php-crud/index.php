@@ -30,7 +30,7 @@ $products = $stmt->fetchAll();
 
 <table class="table table-bordered">
 <tr>
-    <th>Sl.No</th><th>Name</th><th>Price</th><th>category</th><th>Description</th><th>Action</th>
+    <th>Sl.No</th><th>Name</th><th>Price</th><th>category</th><th>Description</th><th>Image</th><th>Action</th>
 </tr>
 
 
@@ -41,6 +41,9 @@ $products = $stmt->fetchAll();
     <td><?= $product['price'] ?></td>
     <td><?= $product['category'] ?></td>
     <td><?= $product['description'] ?></td>
+    <td>
+        <img src="uploads/<?= $product['image'] ?>" width="100" height="100" alt="image">
+    </td>
     <td>
         <a href="edit.php?id=<?= $product['id'] ?>" class="btn btn-warning btn-sm">Edit</a>
         <a href="action/delete.php?id=<?= $product['id'] ?>" class="btn btn-danger btn-sm">Delete</a>
