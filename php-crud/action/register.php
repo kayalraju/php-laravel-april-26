@@ -34,8 +34,6 @@ if($stmt->fetch()){
 // Hash password
 $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-
-
 try {
     $stmt = $pdo->prepare("
         INSERT INTO users(name,email,phone,password) 

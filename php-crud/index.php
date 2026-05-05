@@ -1,9 +1,10 @@
 <?php
 require "config/db.php";
 include "include/header.php";
+include "middleware/auth.php";
 
 
-$stmt = $pdo->prepare("SELECT * FROM products");
+$stmt = $pdo->prepare("SELECT * FROM products WHERE is_delete IS NULL");
 $stmt->execute();
 $products = $stmt->fetchAll();
 
@@ -51,7 +52,9 @@ $products = $stmt->fetchAll();
                 </td>
                 <td>
                     <a href="edit.php?id=<?= $product['id'] ?>" class="btn btn-warning btn-sm">Edit</a>
-                    <a href="action/delete.php?id=<?= $product['id'] ?>" class="btn btn-danger btn-sm">Delete</a>
+                    <a href="action/delete.php?id=<?= $product['id'] ?>" class="btn btn-danger btn-sm"
+                    onclick="return confirm('Are you sure?')"
+                    >Delete</a>
                     <a href="view.php?id=<?= $product['id'] ?>" class="btn btn-info btn-sm">View</a>
                 </td>
             </tr>
