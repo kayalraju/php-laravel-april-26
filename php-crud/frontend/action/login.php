@@ -20,7 +20,7 @@ $user = $stmt->fetch();
 // print_r($user);
 // exit;
 
-if($user && password_verify($password, $user['password'])){
+if($user && $user['role'] == 'user' &&  password_verify($password, $user['password'])){
 
     session_regenerate_id(true);
 
