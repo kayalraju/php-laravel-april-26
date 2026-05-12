@@ -1,0 +1,56 @@
+Sample employees Table
+idnamedepartmentsalary1RajuIT300002AmitHR250003SumanIT400004PriyaSales350005RaviHR28000
+
+1. OR Operator
+Used when any one condition is true.
+SELECT * FROM employeesWHERE department = 'IT' OR department = 'HR';
+Output
+Shows employees from IT or HR department.
+
+2. AND Operator
+Used when all conditions are true.
+SELECT * FROM employeesWHERE department = 'IT' AND salary > 35000;
+Output
+Shows IT employees whose salary is greater than 35000.
+
+3. NOT Operator
+Used to exclude a condition.
+SELECT * FROM employeesWHERE NOT department = 'HR';
+Output
+Shows all employees except HR department.
+
+4. MIN() Function
+Returns the minimum value.
+SELECT MIN(salary) AS minimum_salaryFROM employees;
+Output
+minimum_salary25000
+
+5. MAX() Function
+Returns the maximum value.
+SELECT MAX(salary) AS maximum_salaryFROM employees;
+Output
+maximum_salary40000
+
+6. COUNT() Function
+Counts total rows.
+SELECT COUNT(*) AS total_employeesFROM employees;
+Output
+total_employees5
+
+7. SUM() Function
+Calculates total sum.
+SELECT SUM(salary) AS total_salaryFROM employees;
+Output
+total_salary158000
+
+8. AVG() Function
+Calculates average value.
+SELECT AVG(salary) AS average_salaryFROM employees;
+Output
+average_salary31600
+
+Combined Example
+SELECT     COUNT(*) AS total_employee,    MIN(salary) AS min_salary,    MAX(salary) AS max_salary,    SUM(salary) AS total_salary,    AVG(salary) AS average_salaryFROM employeesWHERE department = 'IT' OR department = 'HR';
+
+PHP MySQL PDO Example
+<?php$pdo = new PDO("mysql:host=localhost;dbname=test", "root", "");$sql = "SELECT             COUNT(*) AS total_employee,            MIN(salary) AS min_salary,            MAX(salary) AS max_salary,            SUM(salary) AS total_salary,            AVG(salary) AS average_salary        FROM employees        WHERE department = 'IT' OR department = 'HR'";$stmt = $pdo->query($sql);$result = $stmt->fetch(PDO::FETCH_ASSOC);echo "Total Employee: " . $result['total_employee'] . "<br>";echo "Minimum Salary: " . $result['min_salary'] . "<br>";echo "Maximum Salary: " . $result['max_salary'] . "<br>";echo "Total Salary: " . $result['total_salary'] . "<br>";echo "Average Salary: " . $result['average_salary'];?>
