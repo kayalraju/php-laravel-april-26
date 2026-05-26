@@ -24,9 +24,34 @@ include "connection.php";
 // $employees = $stmt->fetchAll();
 
 //min function
-$stmt = $pdo->prepare("SELECT MIN(salary) AS minimum_salary FROM employees");
+// $stmt = $pdo->prepare("SELECT MIN(salary) AS minimum_salary FROM employees");
+// $stmt->execute();
+// $employees = $stmt->fetch();
+
+//max function
+// $stmt = $pdo->prepare("SELECT MAX(salary) AS maximum_salary FROM employees");
+// $stmt->execute();
+// $employees = $stmt->fetch();
+
+//sum function
+// $stmt = $pdo->prepare("SELECT SUM(salary) AS total_salary FROM employees");
+// $stmt->execute();
+// $employees = $stmt->fetch();
+
+//avg function
+// $stmt = $pdo->prepare("SELECT AVG(salary) AS average_salary FROM employees");
+// $stmt->execute();
+// $employees = $stmt->fetch();
+
+//limit
+// $stmt = $pdo->prepare("SELECT * FROM employees LIMIT 2");
+// $stmt->execute();
+// $employees = $stmt->fetchAll();
+
+//like
+$stmt = $pdo->prepare("SELECT * FROM employees WHERE name LIKE '%r%'");
 $stmt->execute();
-$employees = $stmt->fetch();
+$employees = $stmt->fetchAll();
 
 
 echo "<pre>";
