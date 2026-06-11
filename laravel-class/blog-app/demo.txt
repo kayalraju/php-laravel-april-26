@@ -1,0 +1,11 @@
+
+Browser Request->
+public/index.php->
+routes(web.php)->
+middleware->
+controller->
+service layaer->
+model(Eloquent orm)->
+database->
+blade/Api response->
+browser->
