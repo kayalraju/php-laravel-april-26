@@ -29,6 +29,11 @@ class HomeController extends Controller
         return view('about');
     }
     public function user(){
-        return view('user');
+        $user=[
+            'name' => 'John Doe',
+            'email' => 'LhD8j@example.com',
+            'role'=> 'admin'
+        ];
+        return view('user',compact('user'));
     }
 }
