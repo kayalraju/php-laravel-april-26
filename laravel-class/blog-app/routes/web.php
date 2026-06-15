@@ -7,6 +7,7 @@ Route::get('/', [HomeController::class,'index']);
 
 Route::get('/about',[HomeController::class,'about']);
 Route::get('/user', [HomeController::class,'user'])->name('user.raju');
+Route::get('/blog',[HomeController::class,'blog'])->name('blog.page');
 
 Route::get('/contact',function(){
     return 'contact page';

@@ -26,8 +26,18 @@ class HomeController extends Controller
         ]);
     }
     public function about(){
-        return view('about');
+        return view('about',[
+            'title' => 'About'
+        ]);
     }
+
+
+    public function blog(){
+        return view('blog',[
+            'title' => 'Blog'
+        ]);
+    }
+    
     public function user(){
         $user=[
             'name' => 'John Doe',
