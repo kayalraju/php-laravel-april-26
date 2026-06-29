@@ -46,4 +46,12 @@ class HomeController extends Controller
         ];
         return view('user',compact('user'));
     }
+
+
+    public function employee(){
+        return view('employee',[
+            'title' => 'employee'
+        ]);
+    }
+
 }

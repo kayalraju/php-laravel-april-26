@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Middleware\CheckAge;
+use App\Http\Middleware\CheckCountry;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -12,7 +14,20 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        //
+        //global middleware
+        //$middleware->append(App\Http\Middleware\CheckAge::class);
+        //$middleware->append(CheckAge::class);
+
+        //group middleware
+        $middleware->appendToGroup('agecheck',[
+            CheckAge::class,
+        ] );
+
+        $middleware->appendToGroup('checkageandcountry',[
+            CheckAge::class,
+            CheckCountry::class
+        ] );
+
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

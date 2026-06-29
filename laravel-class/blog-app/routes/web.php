@@ -60,11 +60,29 @@ Route::get('/student/form',[FormHandallingController::class,'index'])->name('stu
 Route::post('/student/store',[FormHandallingController::class,'store'])->name('student.store');
 
 //crud route
-
-
 Route::get('/product/list',[ProductController::class,'index'])->name('product.list');
 Route::get('/product/add',[ProductController::class,'addview'])->name('product.add');
 Route::post('/product/store',[ProductController::class,'store'])->name('product.store');
 Route::get('/product/edit/{id}',[ProductController::class,'edit'])->name('product.edit');
 Route::put('/product/update/{id}',[ProductController::class,'update'])->name('product.update');
 Route::DELETE('/product/delete/{id}',[ProductController::class,'destroy'])->name('product.destroy');
+
+
+//middleware 
+
+
+//Route::get('/employee',[HomeController::class,'employee'])->middleware('agecheck');
+
+
+
+Route::middleware('checkageandcountry')->group(function () {
+    Route::get('/employee',[HomeController::class,'employee']);
+});
+
+
+
+
+
+
+
+
