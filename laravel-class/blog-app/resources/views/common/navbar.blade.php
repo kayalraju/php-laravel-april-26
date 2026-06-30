@@ -14,7 +14,7 @@
         <li><a href="">Courses</a></li>
         <li><a href="">Blog</a></li>
         <li><a href="">Contact</a></li>
-        <li><a href="">Login</a></li>
+        <li><a href="{{ route('user.login') }}">Login</a></li>
 
       </ul>
     </nav><!-- .nav-menu -->

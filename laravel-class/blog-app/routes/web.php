@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FormHandallingController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -77,6 +78,23 @@ Route::DELETE('/product/delete/{id}',[ProductController::class,'destroy'])->name
 
 Route::middleware('checkageandcountry')->group(function () {
     Route::get('/employee',[HomeController::class,'employee']);
+});
+
+
+//auth 
+
+Route::prefix('user')->group(function () {
+    Route::get('/register', [AuthController::class, 'register'])->name('user.register');
+    Route::post('/register/store', [AuthController::class, 'registerStore'])->name('user.register.store');
+    Route::get('/login', [AuthController::class, 'login'])->name('login');
+    Route::post('/login/store', [AuthController::class, 'loginstore'])->name('user.login.store');
+
+
+    Route::middleware('auth')->group(function () {
+        Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('user.dashboard');
+        Route::post('/logout', [AuthController::class, 'logout'])->name('user.logout');
+    });
+
 });
 
 
