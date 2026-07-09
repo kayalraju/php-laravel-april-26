@@ -48,10 +48,24 @@ class AuthController extends Controller
        }
 
        //email exists or not
-    //    $user=User::where('email','=',$request->email)->first();
-    //    if(!$user){
-    //     return redirect()->back()->withErrors($credentials)->withInput();
-    //    }
+       $user = User::where('email', $request->email)->first();
+
+    if (!$user) {
+        return back()
+            ->withErrors([
+                'email' => 'Email does not exist.',
+            ])
+            ->withInput($request->except('password'));
+    }
+
+    //password match or not
+    if (!Hash::check($request->password, $user->password)) {
+        return back()
+            ->withErrors([
+                'password' => 'Password does not match.',
+            ])
+            ->withInput($request->except('password'));
+    }
 
        if(Auth::attempt($credentials->validated(),$request->boolean('remember'))){
         $request->session()->regenerate();
