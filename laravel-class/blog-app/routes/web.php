@@ -5,6 +5,7 @@ use App\Http\Controllers\FormHandallingController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\OneToOneRelationship;
 
 Route::get('/', [HomeController::class,'index'])->name('home.page');
 
@@ -96,6 +97,15 @@ Route::prefix('user')->group(function () {
     });
 
 });
+
+
+//one to one relationship
+Route::get('/author', [OneToOneRelationship::class, 'createAuthor'])->name('author');
+Route::post('/author/store', [OneToOneRelationship::class, 'storeAuthor'])->name('author.store');
+Route::get('/author/blog/{id}', [OneToOneRelationship::class, 'authorBlog'])->name('author.blog');
+Route::get('/blog', [OneToOneRelationship::class, 'createBlog'])->name('blog');
+Route::post('/blog/store', [OneToOneRelationship::class, 'storeBlog'])->name('blog.store');
+Route::get('/bloglist', [OneToOneRelationship::class, 'authorBlogList'])->name('blog.list');
 
 
 
