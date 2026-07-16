@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FormHandallingController;
 use Illuminate\Support\Facades\Route;
@@ -96,6 +97,22 @@ Route::prefix('user')->group(function () {
         Route::post('/logout', [AuthController::class, 'logout'])->name('user.logout');
     });
 
+});
+
+
+//custom gard use admin
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('/login', [AdminController::class, 'adminlogin'])->name('login');
+    Route::post('/login/store', [AdminController::class, 'adminloginstore'])->name('login.store');
+    //Route::get('/register', [AdminController::class, 'adminregister'])->name('register');
+    //Route::post('/register/create', [AdminController::class, 'adminregisterCreate'])->name('register.store');
+
+
+
+      Route::middleware('auth.admin')->group(function () {
+        Route::get('/dashboard', [AdminController::class, 'admindashboard'])->name('dashboard');
+        Route::POST('/logout', [AdminController::class, 'adminlogout'])->name('logout');
+    });
 });
 
 
