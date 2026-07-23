@@ -13,9 +13,17 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::all();
-        return view('crud.list', compact('products'));
+         $products = Product::paginate(2);
+         return view('crud.list', compact('products'));
+
+        
     }
+    // public function search(Request $requesr)
+    // {
+    //     $search=$requesr->search;
+    //     $products=Product::where('name','like','%'.$search.'%')->paginate(10);
+    //     return view('crud.list',compact('products'));
+    // }
     public function addview()
     {
         return view('crud.add');
